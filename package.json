@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development lerna exec --parallel --stream yarn dev"
+  },
+  "engines": {
+    "yarn": "^1.22.0"
+  },
+  "devDependencies": {
+    "cross-env": "7.0.2",
+    "lerna": "3.20.2",
+    "typescript": "3.7.4"
+  }
+}
