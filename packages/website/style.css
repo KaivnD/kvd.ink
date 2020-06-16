@@ -10,6 +10,7 @@ body {
 .slick-track {
   position: relative;
   display: block;
+  overflow: hidden;
 }
 .slick-loading .slick-slide,
 .slick-loading .slick-track {
@@ -92,7 +93,7 @@ body {
 .slick-dots,
 .slick-next,
 .slick-prev {
-  position: absolute;
+  /* position: absolute; */
   display: block;
   padding: 0;
 }
