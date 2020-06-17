@@ -5,54 +5,20 @@ import {
   Typography,
   CardMedia,
   Button,
+  Divider,
+  Grid,
   CardContent,
 } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import dynamic from "next/dynamic";
 import { Settings } from "react-slick";
+import { PostItem } from "../common/components/PostItem";
+import { SideBarItem } from "../common/components/SideBarItem";
+import { HeroSlide } from "../common/components/HeroSlide";
 
 const Slider = dynamic(import("react-slick"), {
   ssr: false,
 });
-
-const CustomSlide: FC<{ img: string }> = (props) => {
-  const { img, ...ps } = props;
-  //@ts-ignore
-  ps.style = {
-    //@ts-ignore
-    ...ps.style,
-    borderRadius: 0,
-    position: "relative",
-    height: "260px",
-  };
-  return (
-    <Card {...ps}>
-      <CardMedia
-        component="img"
-        alt="Contemplative Reptile"
-        height="260"
-        image={img}
-        style={{ position: "absolute" }}
-        title="Contemplative Reptile"
-      />
-      <CardContent
-        style={{
-          position: "absolute",
-          bottom: 0,
-          background: "#efeeee73",
-          width: "100%",
-        }}
-      >
-        <Typography gutterBottom variant="h5" component="h2">
-          Lizard
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Lizards are a widespread group of squamate reptiles
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
 
 export default function Index() {
   const slideSettings: Settings = {
@@ -113,12 +79,39 @@ export default function Index() {
 
       <Slider {...slideSettings}>
         {slides.map((item, i) => (
-          <CustomSlide img={item.img} key={i} />
+          <HeroSlide img={item.img} key={i} />
         ))}
       </Slider>
-      <Container maxWidth="sm">
-        <Box my={4}></Box>
+
+      <Container maxWidth="lg">
+        <Grid container style={{ marginTop: "6em" }} spacing={3}>
+          <Grid item xs={12} md={8}>
+            <PostItem
+              title="My first post"
+              img="https://picsum.photos/id/1042/600/300"
+              content="lorem"
+              single={false}
+              tags={[{ name: "Processing", color: "red" }]}
+            />
+            <PostItem title="My first post" content="lorem" single={false} />
+            <PostItem
+              title="My first post"
+              img="https://picsum.photos/id/1045/600/300"
+              content="lorem"
+              single={false}
+            />
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <SideBarItem title="Search" content="" />
+          </Grid>
+        </Grid>
       </Container>
+      <Box style={{ margin: "2em auto" }}>
+        <Divider />
+        <Typography variant="body1" component="h1" align="center" gutterBottom>
+          Footer
+        </Typography>
+      </Box>
     </div>
   );
 }
