@@ -26,7 +26,7 @@ export default function MyApp(props: AppProps) {
         <title>Kv.D</title>
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
         />
       </Head>
       <ThemeProvider theme={store.getState().theme}>
